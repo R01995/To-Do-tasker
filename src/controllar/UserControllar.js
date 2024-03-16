@@ -16,7 +16,7 @@ exports.Registration = async (req, res) => {
 
    }
    catch(err) {
-       res.status(400).json({ status:"fail", message: err.message });
+       res.status(200).json({ status:"fail", message: err.message });
    }
 
 }
@@ -29,11 +29,11 @@ exports.Login = async (req, res) => {
       const reqBody = req.body;
       const user = await UserModel.findOne(reqBody);
       if(!user) {
-         return res.status(400).json({ status:"fail", message: "User not found" });         
+         return res.status(200).json({ status:"fail", message: "User not found" });         
       }
      
       if(user.password !== reqBody.password) {
-         return res.status(400).json({ status:"fail", message: "Password not matched" });   
+         return res.status(200).json({ status:"fail", message: "Password not matched" });   
       }
       else {
 
@@ -83,7 +83,7 @@ exports.UpdateProfile = async (req, res) => {
       res.status(200).json({ status:"success", data: user });
    }
    catch(err) {
-       res.status(400).json({ status:"fail", data: message });
+       res.status(200).json({ status:"fail", data: message });
    }
 }
 //Update profile end
@@ -96,7 +96,7 @@ exports.EmailVerify = async (req, res)=>{
        let otp = Math.floor(100000 + Math.random() * 900000)
        const user = await UserModel.findOne(query)
        if(!user){
-       res.status(400).json({status: "fail", data: "User not found"})
+       res.status(200).json({status: "fail", data: "User not found"})
        }
       else{
        //Step 1
@@ -108,7 +108,7 @@ exports.EmailVerify = async (req, res)=>{
 
 
    } catch (error) {
-       res.status(400).json({status: "fail", data: error.message})
+       res.status(200).json({status: "fail", data: error.message})
    }
 }
 //Email Verify End
@@ -136,7 +136,7 @@ exports.OtpVerify = async (req, res) => {
       }
      
    } catch (error) {
-       res.status(400).json({ status: "fail", data: error.message });
+       res.status(200).json({ status: "fail", data: error.message });
    }
 };
 //OTP verify End
