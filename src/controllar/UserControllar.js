@@ -5,7 +5,6 @@ const OtpModel = require("../models/OtpModel");
 
 
 
-
 //Registration start
 exports.Registration = async (req, res) => {
    try {
@@ -23,39 +22,33 @@ exports.Registration = async (req, res) => {
 //Registration end
 
 //Login start
-
 exports.Login = async (req, res) => {
    try {
-      const reqBody = req.body;
-      const user = await UserModel.findOne(reqBody);
-      if(!user) {
-         return res.status(200).json({ status:"fail", message: "User not found" });         
-      }
-     
-      if(user.password !== reqBody.password) {
-         return res.status(200).json({ status:"fail", message: "Password not matched" });   
-      }
-      else {
+       const reqBody = req.body;
+       let user = await UserModel.findOne({email: reqBody.email});
+       if (!user) {
+           return res.status(200).json({status: "fail", data: "User not found"})
+       }
+       if (user.password !== reqBody.password) {
 
-         // token generate start
-         const payload = {
-            exp: Math.floor(Date.now() / 1000) + (60 * 60), // 1 hour
-            data: user["email"]  //data: user.email   
-         }
-         let token = jwt.sign(payload, "12345678");
+           return res.status(200).json({status: "fail", data: "Invalide Password"})
+       } else {
 
-         // token generate end
-         //projection
-         const responseData = {email: user["email"], firstName: user["firstName"], lastName: user["lastName"], profilePic: user["profilePic"]};
-        res.status(200).json({ status:"success", data: responseData, token: token });
-      }
-   }
-   catch(err) {
-       res.status(400).json({ status:"fail", message: err.message });
+           let payload = {
+               exp: Math.floor(Date.now() / 1000) + (60 * 60), // 1 hour
+               data: user['email']
+           };
+           let token = jwt.sign(payload, '12345')
+           //Projection
+           const responseData = {email:user['email'], firstName:user['firstName'], lastName: user['lastName'], profilePicture: user['profilePicture']}
+           res.status(200).json({status: "sucess", data: responseData, token: token})
+       }
+   } catch (error) {
+       res.status(200).json({status: "fail", data: error.message})
    }
 }
+//Login End
 
-//Login end
 
 // User details start
 exports.ProfileDetails = async (req, res) => {
