@@ -7,7 +7,7 @@ const TodoControllar = require("../controllar/TodoControllar");
 
 //user api router start
 router.post("/registration", UserControllar.Registration);
-router.get("/login", UserControllar.Login);
+router.post("/login", UserControllar.Login);
 router.post("/user-profile-update", AuthVarifyMiddleware, UserControllar.UpdateProfile);
 
 router.get("/Profile-details", AuthVarifyMiddleware, UserControllar.ProfileDetails);
