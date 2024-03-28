@@ -12,6 +12,7 @@ const rateLimit = require("express-rate-limit");
 app.use(cors());
 app.use(bodyParser.json());
 
+//Create token start
 app.use(
     rateLimit({
         windowMs: 60 * 60 * 1000, //  1 hour
@@ -19,8 +20,10 @@ app.use(
     })
 )
 
+//Create token end
 
 
+//Conecting  with MongoDB database
 const uri = `mongodb+srv://prictic:<password>@cluster0.l0f9rc6.mongodb.net/todotasker?retryWrites=true&w=majority`;
 //mongodb+srv://prictic:prictic@cluster0.l0f9rc6.mongodb.net/
 const options = {user:"prictic", pass:"prictic"};
@@ -43,3 +46,5 @@ app.use("*", (req, res) => {
 
 
 module.exports = app;
+
+// Conecting  with MongoDB database
