@@ -57,8 +57,8 @@ exports.ProfileDetails = async (req, res) => {
       let query = { email: email };
       const user = await UserModel.findOne(query);
       //projection
-      const responseData = {email: user["email"], firstName: user["firstName"], lastName: user["lastName"]};
-      res.status(200).json({ status:"success", data: responseData });
+      // const responseData = {email: user["email"], firstName: user["firstName"], lastName: user["lastName"]};
+      res.status(200).json({ status:"success", data: user });
    }
    catch(err) {
        res.status(200).json({ status:"fail", data:err});
