@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   let token = req.headers["token"];
-  jwt.verify(token, "12345  ", (err, decoded) => {
+  jwt.verify(token, "12345", (err, decoded) => {
       if (err) {
           return res.status(401).json({ status:"fail", message: "Unauthorized User" });
       }
@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
           req.headers.email = email;
           next();
       }
-  })             
+  })              
 }
-
+ 
 //AuthVarifyMiddleware end

@@ -40,8 +40,8 @@ exports.Login = async (req, res) => {
            };
            let token = jwt.sign(payload, '12345')
            //Projection
-           const responseData = {email:user['email'], firstName:user['firstName'], lastName: user['lastName'], profilePic: user['profilePic']}
-           res.status(200).json({status: "sucess", data: responseData, token: token})
+         //   const responseData = {email:user['email'], firstName:user['firstName'], lastName: user['lastName'], profilePic: user['profilePic']}
+           res.status(200).json({status: "sucess", data: user, token: token})
        }
    } catch (error) {
        res.status(200).json({status: "fail", data: error.message})
