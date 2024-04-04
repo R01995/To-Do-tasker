@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(
     rateLimit({
         windowMs: 60 * 60 * 1000, //  1 hour
-        max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+        max: 2000, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
     })
 )
 
