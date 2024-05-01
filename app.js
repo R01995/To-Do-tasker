@@ -24,7 +24,7 @@ app.use(
 
 
 //Conecting  with MongoDB database
-const uri = `mongodb+srv://prictic:<password>@cluster0.l0f9rc6.mongodb.net/todotasker?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://prictic:<password>@cluster0.l0f9rc6.mongodb.net/AddSearchProject?retryWrites=true&w=majority`;
 //mongodb+srv://prictic:prictic@cluster0.l0f9rc6.mongodb.net/
 const options = {user:"prictic", pass:"prictic"};
 

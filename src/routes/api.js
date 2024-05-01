@@ -3,9 +3,13 @@ const router = express.Router();
 const UserControllar = require("../controllar/UserControllar");
 const AuthVarifyMiddleware = require("../middleware/AuthVarifyMiddleware");
 const TodoControllar = require("../controllar/TodoControllar");
+const TestControllar = require("../controllar/TestControllar");
 
 
 //user api router start
+router.get("/test", TestControllar.test);
+   
+router.get("/product-list/:pageNumber/:perPage/:searchKeyword", UserControllar.ProductSearchAndPaiganation);
 router.post("/registration", UserControllar.Registration);
 router.post("/login", UserControllar.Login);
 router.post("/user-profile-update", AuthVarifyMiddleware, UserControllar.UpdateProfile);

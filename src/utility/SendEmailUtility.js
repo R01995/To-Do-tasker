@@ -11,7 +11,7 @@ const SendEmailUtility = async ( EmailTo, EmailSubject, EmailText ) => {
       });
       //the Email masage 
       let mailOptions = {
-        from: '"To-Do-Tasker" <rayr89311@gmail.com>',
+        from: '"Collage" <rayr89311@gmail.com>',
         to: EmailTo,
         subject: EmailSubject,
         text: EmailText

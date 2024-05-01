@@ -21,10 +21,34 @@ const userSchema = new mongoose.Schema(
     profilePic: {
         type: String,
     },
+    gender: {
+        type: String
+    },
+    dateOfBirth: {
+        type: Date
+    },
+    country: {
+        type: String
+    },
+    city: {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    phone: {
+        type: String
+    },
+    role: {
+        type: String,
+        require : true
+    },
+
     createDate: {
         type: Date,
         default: Date.now
     },
+
     },
     {
         versionKey: false
